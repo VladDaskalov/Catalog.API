@@ -19,6 +19,7 @@ namespace Catalog.Controllers
             _repository = repository;
         }
 
+        // GET /items
         [HttpGet]
         public IEnumerable<ItemDTO> GetItems()
         {
@@ -26,6 +27,7 @@ namespace Catalog.Controllers
             return items;
         }
 
+        // GET /items/{id}
         [HttpGet]
         [Route("{id}")]
         public ActionResult<ItemDTO> GetItem(Guid id)
@@ -38,6 +40,64 @@ namespace Catalog.Controllers
             }
 
             return item.AsDTO();
+        }
+
+        // POST /items
+        [HttpPost]
+        public ActionResult<ItemDTO> CreateItem(CreateItemDTO createItemDto)
+        {
+            Item item = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = createItemDto.Name,
+                Price = createItemDto.Price,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+
+            _repository.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDTO());
+        }
+
+        // PUT /items/{id}
+        [HttpPut("{id}")]
+        public ActionResult<ItemDTO> UpdateItem(Guid id, UpdateItemDTO updateItemDto)
+        {
+            var existingItem = _repository.GetItem(id);
+
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
+
+            Item updatedItem = new()
+            {
+                Id = id,
+                Name = updateItemDto.Name,
+                Price = updateItemDto.Price,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+
+            _repository.UpdateItem(updatedItem);
+
+            return AcceptedAtAction(nameof(GetItem), new { id = updatedItem.Id }, updatedItem.AsDTO());
+        }
+
+        // DELETE /items/{id}
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteItem(Guid id)
+        {
+            var existingItem = _repository.GetItem(id);
+
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteItem(id);
+
+            return Ok();
         }
     }
     
