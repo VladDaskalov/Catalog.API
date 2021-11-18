@@ -1,7 +1,7 @@
 # Folders #
 ###################
-src/bin/
-src/obj/
+Catalog.API/bin/
+Catalog.API/obj/
 
 
 # Compiled source #

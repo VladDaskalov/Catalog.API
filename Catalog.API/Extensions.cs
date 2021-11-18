@@ -1,7 +1,7 @@
-using Catalog.DTOs;
-using Catalog.Entities;
+using Catalog.API.DTOs;
+using Catalog.API.Entities;
 
-namespace Catalog
+namespace Catalog.API
 {
     public static class Extensions
     {

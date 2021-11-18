@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Catalog.API.csproj",
+                "${workspaceFolder}/Catalog.API/Catalog.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -23,7 +23,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/Catalog.API.csproj",
+                "${workspaceFolder}/Catalog.API/Catalog.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -36,7 +36,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/Catalog.API.csproj",
+                "${workspaceFolder}/Catalog.API/Catalog.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -51,12 +51,12 @@
             "dockerBuild": {
                 "tag": "catalogapi:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/src/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Catalog.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/Catalog.API.csproj"
+                "appProject": "${workspaceFolder}/Catalog.API/Catalog.API.csproj"
             }
         },
         {
@@ -67,12 +67,12 @@
             ],
             "dockerBuild": {
                 "tag": "catalogapi:latest",
-                "dockerfile": "${workspaceFolder}/src/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Catalog.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/Catalog.API.csproj"
+                "appProject": "${workspaceFolder}/Catalog.API/Catalog.API.csproj"
             }
         },
         {
@@ -83,7 +83,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/Catalog.API.csproj",
+                "appProject": "${workspaceFolder}/Catalog.API/Catalog.API.csproj",
                 "enableDebugging": true,
                 "configureSsl": false
             }
@@ -96,7 +96,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/Catalog.API.csproj"
+                "appProject": "${workspaceFolder}/Catalog.API/Catalog.API.csproj"
             }
         }
     ]

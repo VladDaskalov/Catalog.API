@@ -1,6 +1,6 @@
 using System;
 
-namespace Catalog.Entities
+namespace Catalog.API.Entities
 {
     public record Item
     {

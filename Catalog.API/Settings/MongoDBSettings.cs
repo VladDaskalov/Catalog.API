@@ -1,4 +1,4 @@
-namespace Catalog.Settings
+namespace Catalog.API.Settings
 {
     public class MongoDBSettings
     {

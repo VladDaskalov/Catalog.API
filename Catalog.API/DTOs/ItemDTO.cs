@@ -1,6 +1,6 @@
 using System;
 
-namespace Catalog.DTOs
+namespace Catalog.API.DTOs
 {
     public class ItemDTO
     {
