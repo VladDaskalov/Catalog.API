@@ -2,6 +2,9 @@
 ###################
 Catalog.API/bin/
 Catalog.API/obj/
+Catalog.UnitTests/bin/
+Catalog.UnitTests/obj/
+obj/
 
 
 # Compiled source #
