@@ -56,6 +56,7 @@ namespace Catalog.API.Controllers
             {
                 Id = Guid.NewGuid(),
                 Name = createItemDto.Name,
+                Description = createItemDto.Description,
                 Price = createItemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow
             };
@@ -76,17 +77,13 @@ namespace Catalog.API.Controllers
                 return NotFound();
             }
 
-            Item updatedItem = new()
-            {
-                Id = id,
-                Name = updateItemDto.Name,
-                Price = updateItemDto.Price,
-                CreatedDate = DateTimeOffset.UtcNow
-            };
+            existingItem.Name = updateItemDto.Name;
+            existingItem.Description = updateItemDto.Description;
+            existingItem.Price = updateItemDto.Price;
 
-            await _repository.UpdateItemAsync(updatedItem);
+            await _repository.UpdateItemAsync(existingItem);
 
-            return AcceptedAtAction(nameof(GetItemAsync), new { id = updatedItem.Id }, updatedItem.AsDTO());
+            return AcceptedAtAction(nameof(GetItemAsync), new { id = existingItem.Id }, existingItem.AsDTO());
         }
 
         // DELETE /items/{id}
